@@ -18,7 +18,7 @@
 
 ## 起動方法
 
-Node.js 24.11.0以上を用意してください。
+Node.js 24.xを用意してください。
 
 ```bash
 npm install
