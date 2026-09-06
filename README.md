@@ -18,10 +18,10 @@
 
 ## 起動方法
 
-Node.js 24.19.0以上を用意してください。
+Node.js 24.11.0以上を用意してください。
 
 ```bash
-npm ci
+npm install
 npm run dev
 ```
 
@@ -116,6 +116,16 @@ tests/                     ゲーム状態・保存・オフラインのテス�
 | `npm run format`    | Oxfmtで整形                    |
 
 GitHubへpushすると、`.github/workflows/ci.yml` が型チェック、Lint、テスト、ビルドを自動実行します。
+
+## Vercelへのデプロイ
+
+1. [VercelのNew Project](https://vercel.com/new)を開きます。
+2. GitHubの `tracesvides-alt/twoApl` をImportします。
+3. Root Directoryはリポジトリのルートのままにします。
+4. `vercel.json` がBuild Command、Output Directory、Install Commandを自動設定します。
+5. Node.js Versionは24.xを選んでDeployします。
+
+以後は `main` へpushするたびにVercelが自動でビルドとデプロイを実行します。
 
 ## 検証
 
