@@ -1,6 +1,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { staticPath } from './static-path.mjs';
 const root = path.resolve('dist/client');
 const port = Number(process.env.PORT || 4173);
 const mime = {
@@ -25,14 +26,8 @@ http
       res.writeHead(400).end();
       return;
     }
-    let file = path.resolve(root, '.' + url);
-    if (file !== root && !file.startsWith(root + path.sep)) {
-      res.writeHead(403).end();
-      return;
-    }
-    if (fs.existsSync(file) && fs.statSync(file).isDirectory())
-      file = path.join(file, 'index.html');
-    if (!fs.existsSync(file)) {
+    const file = staticPath(root, url);
+    if (!file) {
       res.writeHead(404).end('Not found');
       return;
     }

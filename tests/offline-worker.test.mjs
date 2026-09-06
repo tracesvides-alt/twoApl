@@ -6,15 +6,23 @@ import os from 'node:os';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { staticPath } from '../scripts/static-path.mjs';
 
 test('Offline worker caches static pages, returns settings offline, isolates other origins and caches', async () => {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'garage-worker-test-'));
   const root = path.join(temp, 'dist', 'client');
   fs.mkdirSync(path.join(root, 'parents'), { recursive: true });
   fs.writeFileSync(path.join(root, 'index.html'), 'game');
-  fs.writeFileSync(path.join(root, 'parents', 'index.html'), 'settings');
+  fs.writeFileSync(path.join(root, 'parents.html'), 'settings');
   fs.writeFileSync(path.join(root, 'app.js'), 'game-code');
   try {
+    assert.equal(staticPath(root, '/'), path.join(root, 'index.html'));
+    assert.equal(
+      staticPath(root, '/parents/'),
+      path.join(root, 'parents.html'),
+    );
+    assert.equal(staticPath(root, '/parents'), path.join(root, 'parents.html'));
+    assert.equal(staticPath(root, '/../../outside.txt'), null);
     const builder = fileURLToPath(
       new URL('../scripts/build-sw.mjs', import.meta.url),
     );
