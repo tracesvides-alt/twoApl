@@ -1,0 +1,17 @@
+{
+  "id":"/",
+  "name":"どうぶつの おでかけガレージ",
+  "short_name":"おでかけ",
+  "description":"どうぶつとお出かけして、自分だけのモーターパークを育てよう。",
+  "lang":"ja",
+  "start_url":"/",
+  "scope":"/",
+  "display":"standalone",
+  "background_color":"#e9f5ff",
+  "theme_color":"#142f51",
+  "icons":[
+    {"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ]
+}

@@ -1,0 +1,1633 @@
+/* A toy motor park: saturated sky, substantial vehicles, a blue control panel. */
+:root {
+  --background: #102d4e;
+  --foreground: #17375a;
+  --primary: #1879d6;
+  --popover: #f7fbff;
+  --input: #cadcf0;
+  --muted: #eaf3fc;
+  --color-muted-foreground: #547496;
+  --color-ring: #2586ea;
+  --color-border: #c0d6ed;
+}
+body {
+  background: #102d4e;
+  color: #17375a;
+}
+.app {
+  max-width: 1600px;
+  padding: 0 30px;
+}
+.topbar {
+  height: 100px;
+  color: #fff;
+}
+.brand {
+  color: #fff;
+  gap: 13px;
+}
+.brand-mark {
+  background: #ffcc3d;
+  color: #122f51;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  transform: rotate(-6deg);
+  box-shadow: 0 4px 0 #af7917;
+}
+.brand-mark svg {
+  width: 31px;
+  height: 31px;
+  stroke-width: 2.8;
+  transform: rotate(6deg);
+}
+.wordmark {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+.wordmark > span {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 0.015em;
+  line-height: 1.5;
+}
+.wordmark .brand-accent {
+  display: inline;
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: #ffcf45;
+}
+.top-actions .icon-button {
+  background: #244769;
+  color: #dcefff;
+  border: 1px solid #ffffff15;
+  border-radius: 16px;
+  box-shadow: 0 3px 0 #071d36;
+}
+.top-actions .icon-button:hover {
+  background: #325a83;
+}
+.offline-label {
+  color: #aac5df;
+  font-size: 11px;
+}
+.offline-label i {
+  background: #55d6bd;
+  box-shadow: 0 0 0 4px #55d6bd16;
+}
+.world {
+  background: #bcdef4;
+  border: 4px solid #345677;
+  border-radius: 30px;
+  height: calc(100svh - 222px);
+  min-height: 580px;
+  max-height: 950px;
+  box-shadow: 0 10px 0 #081d3570;
+}
+.world-art {
+  object-position: 50% 58%;
+}
+.screen-home:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    #e5f5ffb5 0%,
+    #e5f5ff45 34%,
+    transparent 57%
+  );
+  pointer-events: none;
+}
+.scene-heading {
+  top: 38px;
+  left: 38px;
+}
+.scene-heading p {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 900;
+  color: #2c6387;
+}
+.scene-heading p span {
+  background: #268fe2;
+  box-shadow: 0 0 0 4px #268fe219;
+}
+.scene-heading h1 {
+  font-size: clamp(38px, 4.1vw, 62px);
+  line-height: 1.32;
+  letter-spacing: -0.04em;
+  color: #163657;
+  text-shadow: 0 4px 0 #ffffff9e;
+}
+.scene-heading em {
+  font-style: normal;
+  color: #126eca;
+}
+.garage-stamp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #315d7f;
+}
+.garage-stamp svg {
+  width: 17px;
+  height: 17px;
+}
+.garden-button {
+  background: #ffffffee;
+  border: 2px solid white;
+  box-shadow: 0 5px 0 #15396138;
+  color: #1c5275;
+  top: 26px;
+  right: 26px;
+  border-radius: 18px;
+}
+.garden-button > svg:first-child {
+  color: #19a385;
+}
+.garden-button small {
+  color: #60879e;
+}
+.weather-button {
+  background: #fffef2e6;
+  border: 2px solid #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 0 #12365120;
+  color: #efac18;
+}
+.home-toy {
+  left: 58%;
+  top: 27%;
+  transform: translate(-50%, 0);
+}
+.home-toy .toy-car {
+  width: 450px;
+  height: 315px;
+}
+.home-toy .car-body {
+  bottom: -68px;
+  filter: drop-shadow(0 18px 8px #08213d3d);
+}
+.home-toy .passenger {
+  top: 2%;
+  width: 33%;
+  left: 38%;
+}
+.speech-bubble {
+  background: #fff;
+  border: 2px solid #deefff;
+  box-shadow: 0 4px 0 #173c6730;
+  color: #21516e;
+  top: 2px;
+  left: 57%;
+  font-size: 13px;
+}
+.home-keepsake {
+  bottom: 28%;
+}
+.home-controls {
+  background: linear-gradient(135deg, #204c79, #123858);
+  border: 2px solid #5e86a7;
+  box-shadow:
+    0 7px 0 #0725458f,
+    0 -1px 0 #ffffff38 inset;
+  border-radius: 24px;
+  bottom: 22px;
+  max-width: calc(100% - 48px);
+  padding: 18px 25px 22px;
+  gap: 28px;
+}
+.group-label {
+  color: #d9efff;
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.group-label b {
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  font-size: 11px;
+  background: #0b2b49;
+  color: #86b2d5;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+.friend-picks button,
+.car-picks button {
+  width: 74px;
+  height: 74px;
+  background: linear-gradient(145deg, #dceefb, #a9c9e3);
+  border: 2px solid #c2dfef;
+  border-radius: 17px;
+  box-shadow: 0 4px 0 #092844;
+}
+.friend-picks .chosen,
+.car-picks .chosen {
+  background: linear-gradient(145deg, #ffe492, #ffc548);
+  border: 3px solid #fff2ac;
+  box-shadow:
+    0 4px 0 #9f711f,
+    0 0 0 2px #ffd65d;
+}
+.selection-check {
+  background: #147cca;
+  color: white;
+  width: 20px;
+  height: 20px;
+  right: -4px;
+  bottom: -5px;
+  border: 2px solid #fff6c2;
+}
+.cars-group {
+  border-left-color: #477194;
+  padding-left: 28px;
+}
+.go-button {
+  background: linear-gradient(165deg, #ffdc58, #ffb825);
+  color: #143858;
+  border: 2px solid #ffe391;
+  box-shadow:
+    0 6px 0 #bb7a15,
+    0 1px 0 #fff8 inset;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 900;
+}
+.go-button > svg:last-child {
+  background: #123958;
+  color: #ffce43;
+  border-radius: 50%;
+  padding: 6px;
+  width: 38px;
+  height: 38px;
+}
+.go-button:hover {
+  background: linear-gradient(165deg, #ffe77e, #ffc342);
+}
+.go-button small {
+  color: #6e5624;
+  opacity: 1;
+}
+.home-controls .go-button {
+  min-width: 218px;
+  min-height: 88px;
+}
+.below-world {
+  min-height: 117px;
+  padding: 18px 4px;
+  gap: 22px;
+}
+.footer-label {
+  font-size: 11px;
+  color: #a8c8e2;
+  line-height: 1.6;
+  max-width: 200px;
+}
+.footer-label svg {
+  color: #56d6b5;
+  flex-shrink: 0;
+}
+.activity-choices {
+  gap: 12px;
+  flex: 1;
+  max-width: 860px;
+}
+.activity-choices button {
+  background: #21486e;
+  border: 1px solid #3b6486;
+  border-radius: 17px;
+  box-shadow: 0 4px 0 #071f39;
+  flex: 1;
+  min-height: 66px;
+  padding: 12px 17px;
+  justify-content: center;
+  color: #d2eaff;
+  font-size: 13px;
+  gap: 10px;
+}
+.activity-choices button > svg {
+  width: 29px;
+  height: 29px;
+  background: #e07b5624;
+  color: #ffad7f;
+  border-radius: 9px;
+  padding: 4px;
+  box-sizing: content-box;
+}
+.activity-choices button:nth-child(2) > svg {
+  background: #3da0df30;
+  color: #80d2ff;
+}
+.activity-choices button:nth-child(3) > svg {
+  background: #36d0a51c;
+  color: #6cddad;
+}
+.activity-choices button.active {
+  background: #2b5b83;
+  border: 2px solid #ffc84b;
+  color: #fff;
+  box-shadow: 0 4px 0 #846523;
+}
+.footer-note {
+  color: #a9c6de;
+}
+.stage-top p {
+  color: #2f6988;
+}
+.stage-top h1 {
+  color: #123858;
+  text-shadow: 0 2px 0 #fff8;
+}
+.stage-back {
+  background: #fff;
+  border: 2px solid #d8edff;
+  border-radius: 16px;
+  box-shadow: 0 4px 0 #143c6740;
+  color: #236798;
+}
+.ride-markers span,
+.activity-progress span {
+  background: #dff0ffe0;
+  color: #77a6c4;
+  border: 2px solid #fff;
+}
+.ride-markers .passed,
+.activity-progress .done {
+  background: #138ec0;
+  color: #fff;
+  border-color: #88d7ef;
+}
+.drive-destination {
+  background: #fff7cf;
+  color: #23516f;
+  border-color: #ffdb5f;
+  border-radius: 24px;
+}
+.drive-destination > svg {
+  color: #ec9f1f;
+}
+.quiet-button {
+  background: #ffffffd9;
+  color: #3c6681;
+  box-shadow: 0 3px 0 #15395720;
+}
+.mini-hint {
+  background: #ffffffdf;
+  color: #32779e;
+}
+.screen-reward .weather-tint {
+  background: #d5edffce;
+}
+.reward-kicker {
+  color: #1587b2;
+}
+.reward-panel h1 {
+  color: #173b60;
+  text-shadow: 0 2px 0 white;
+}
+.gift-art {
+  background: #ffdc65;
+  box-shadow:
+    0 0 0 10px #fff9da80,
+    0 10px 0 #1c53721a;
+}
+.reward-friends > span {
+  background: white;
+  color: #206896;
+}
+.growth-dots i {
+  background: #ffce45;
+  border-color: #dfac2c;
+}
+.empty-garden {
+  color: #235c7f;
+}
+.parent-dialog,
+.rest-dialog {
+  color: #173858;
+}
+.parent-note {
+  background: #eaf3fb;
+}
+.parent-rest {
+  background: #225e97;
+}
+.dialog-x {
+  background: #e4eef9;
+}
+.gate-numbers button {
+  background: #e1effa;
+  color: #175888;
+}
+.gate-dots .filled {
+  background: #258cc8;
+}
+@media (max-width: 1200px) {
+  .home-controls {
+    gap: 20px;
+    padding: 16px 20px 20px;
+  }
+  .friend-picks button,
+  .car-picks button {
+    width: 64px;
+    height: 66px;
+  }
+  .cars-group {
+    padding-left: 20px;
+  }
+  .home-controls .go-button {
+    min-width: 190px;
+    font-size: 22px;
+  }
+  .home-toy .toy-car {
+    width: 400px;
+    height: 285px;
+  }
+  .home-toy {
+    left: 59%;
+    top: 28%;
+  }
+  .scene-heading h1 {
+    font-size: 46px;
+  }
+  .below-world {
+    justify-content: center;
+  }
+  .footer-label {
+    display: none;
+  }
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .world {
+    min-height: 640px;
+  }
+  .home-toy {
+    top: 30%;
+    left: 60%;
+  }
+  .home-toy .toy-car {
+    width: 340px;
+    height: 255px;
+  }
+  .home-controls {
+    gap: 18px;
+  }
+  .home-controls .go-button {
+    min-width: 178px;
+  }
+  .friend-picks,
+  .car-picks {
+    grid-template-columns: repeat(2, 64px);
+  }
+  .scene-heading h1 {
+    font-size: 39px;
+  }
+  .scene-heading {
+    left: 28px;
+    top: 32px;
+  }
+  .garden-button {
+    padding: 10px 13px;
+    right: 20px;
+  }
+  .garage-stamp {
+    font-size: 8px;
+  }
+}
+@media (max-width: 700px) {
+  .app {
+    padding: 0 10px;
+  }
+  .topbar {
+    height: 80px;
+  }
+  .brand {
+    gap: 10px;
+  }
+  .brand-mark {
+    width: 38px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .brand-mark svg {
+    width: 24px;
+    height: 24px;
+  }
+  .wordmark {
+    font-size: 9px;
+  }
+  .wordmark > span {
+    font-size: 17px;
+  }
+  .top-actions .icon-button {
+    width: 39px;
+    height: 41px;
+    border-radius: 13px;
+  }
+  .world {
+    border-width: 3px;
+    border-radius: 24px;
+    min-height: 615px;
+    height: calc(100svh - 166px);
+  }
+  .scene-heading {
+    left: 22px;
+    top: 24px;
+  }
+  .scene-heading p {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+  .scene-heading h1 {
+    font-size: 36px;
+    line-height: 1.25;
+  }
+  .garage-stamp {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+    margin-top: 11px;
+    gap: 5px;
+  }
+  .garage-stamp svg {
+    width: 12px;
+    height: 12px;
+  }
+  .garden-button {
+    top: 159px;
+    right: 15px;
+    padding: 9px 10px;
+    border-radius: 14px;
+    gap: 6px;
+  }
+  .garden-button span {
+    font-size: 11px;
+  }
+  .garden-button > svg:first-child {
+    width: 22px;
+    height: 22px;
+  }
+  .weather-button {
+    top: 26px;
+    right: 19px;
+    width: 42px;
+    height: 44px;
+    border-radius: 15px;
+  }
+  .home-toy {
+    left: 52%;
+    top: 35%;
+  }
+  .home-toy .toy-car {
+    width: 300px;
+    height: 205px;
+  }
+  .home-toy .car-body {
+    bottom: -49px;
+  }
+  .home-toy .passenger {
+    top: 1%;
+  }
+  .speech-bubble {
+    top: -1px;
+    left: 44%;
+    font-size: 11px;
+    padding: 8px 13px;
+  }
+  .home-controls {
+    width: calc(100% - 22px);
+    max-width: none;
+    bottom: 14px;
+    gap: 10px 15px;
+    padding: 12px 14px 16px;
+    border-radius: 19px;
+    border-color: #517aa0;
+  }
+  .group-label {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .group-label b {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  .friend-picks button,
+  .car-picks button {
+    width: 100%;
+    height: 60px;
+    min-width: 0;
+    border-radius: 14px;
+  }
+  .friend-picks button .sprite,
+  .car-picks button .sprite {
+    max-width: 65px;
+  }
+  .friend-picks,
+  .car-picks {
+    gap: 6px;
+  }
+  .cars-group {
+    padding-left: 0;
+    border: 0;
+  }
+  .home-controls .go-button {
+    font-size: 21px;
+    min-height: 60px;
+    padding: 10px 17px;
+    border-radius: 15px;
+  }
+  .home-controls .go-button > span {
+    gap: 12px;
+  }
+  .home-controls .go-button small {
+    font-size: 9px;
+  }
+  .go-button > svg:last-child {
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+  }
+  .home-keepsake {
+    bottom: 37%;
+  }
+  .below-world {
+    padding: 12px 0;
+    min-height: 86px;
+  }
+  .activity-choices {
+    gap: 7px;
+  }
+  .activity-choices button {
+    font-size: 9px;
+    border-radius: 13px;
+    padding: 7px 2px;
+    min-height: 65px;
+    gap: 3px;
+  }
+  .activity-choices button > svg {
+    width: 22px;
+    height: 22px;
+    padding: 2px;
+    border-radius: 6px;
+  }
+  .activity-choices button.active {
+    border-width: 2px;
+  }
+  .stage-top h1 {
+    font-size: 22px;
+  }
+  .garden-weather {
+    top: 101px;
+  }
+  .garden-footer .go-button {
+    font-size: 17px;
+  }
+  .reward-panel .go-button {
+    font-size: 21px;
+  }
+  .reward-panel h1 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 380px) {
+  .brand-mark {
+    display: grid;
+    width: 32px;
+    height: 35px;
+  }
+  .brand {
+    gap: 6px;
+  }
+  .wordmark > span {
+    font-size: 15px;
+  }
+  .top-actions {
+    gap: 5px;
+  }
+  .top-actions .icon-button {
+    width: 34px;
+    height: 38px;
+  }
+  .scene-heading h1 {
+    font-size: 32px;
+  }
+  .scene-heading p {
+    font-size: 9px;
+  }
+  .garage-stamp {
+    display: none;
+  }
+  .home-toy .toy-car {
+    width: 270px;
+    height: 195px;
+  }
+  .home-controls {
+    padding: 11px 11px 15px;
+    gap: 10px;
+  }
+  .activity-choices {
+    gap: 5px;
+  }
+  .activity-choices button {
+    font-size: 8px;
+  }
+  .stage-top h1 {
+    font-size: 19px;
+  }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .app {
+    padding: 0 14px;
+  }
+  .topbar {
+    height: 62px;
+  }
+  .brand-mark {
+    width: 39px;
+    height: 40px;
+    border-radius: 11px;
+  }
+  .wordmark > span {
+    font-size: 18px;
+  }
+  .wordmark {
+    font-size: 9px;
+  }
+  .world {
+    min-height: 365px;
+    height: calc(100svh - 146px);
+    border-width: 3px;
+    border-radius: 23px;
+  }
+  .scene-heading {
+    top: 20px;
+    left: 23px;
+  }
+  .scene-heading p {
+    font-size: 10px;
+  }
+  .scene-heading h1 {
+    font-size: 32px;
+  }
+  .garage-stamp {
+    display: none;
+  }
+  .home-toy {
+    top: 13%;
+    left: 56%;
+  }
+  .home-toy .toy-car {
+    width: 270px;
+    height: 194px;
+  }
+  .home-toy .car-body {
+    bottom: -48px;
+  }
+  .speech-bubble {
+    top: 5px;
+    font-size: 10px;
+  }
+  .home-controls {
+    bottom: 12px;
+    padding: 9px 16px 14px;
+    gap: 20px;
+  }
+  .friend-picks,
+  .car-picks {
+    display: flex;
+  }
+  .friend-picks button,
+  .car-picks button {
+    width: 49px;
+    height: 52px;
+  }
+  .home-controls .go-button {
+    min-height: 60px;
+    min-width: 170px;
+    font-size: 19px;
+    padding: 10px 16px;
+    margin-top: 15px;
+  }
+  .group-label {
+    font-size: 9px;
+  }
+  .group-label b {
+    font-size: 8px;
+  }
+  .garden-button {
+    top: 16px;
+    right: 20px;
+  }
+  .garden-button small {
+    display: none;
+  }
+  .garden-button span {
+    font-size: 12px;
+  }
+  .garden-button > svg:first-child {
+    width: 24px;
+    height: 24px;
+  }
+  .below-world {
+    min-height: 80px;
+    padding: 9px 0;
+  }
+  .activity-choices button {
+    min-height: 57px;
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+  .activity-choices button > svg {
+    width: 24px;
+    height: 24px;
+    padding: 3px;
+  }
+}
+@media (min-width: 701px) and (max-width: 860px) and (max-height: 560px) {
+  .home-controls {
+    gap: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .friend-picks button,
+  .car-picks button {
+    width: 43px;
+    height: 50px;
+  }
+  .cars-group {
+    padding-left: 12px;
+  }
+  .home-controls .go-button {
+    min-width: 151px;
+    font-size: 17px;
+  }
+}
+.world-art {
+  background: url('/art/motor-park.webp') center 58% / cover no-repeat;
+}
+@media (min-width: 1001px) and (min-height: 561px) {
+  .world {
+    min-height: 500px;
+  }
+}
+.sprite {
+  position: relative;
+  background-image: none;
+}
+.sprite-window {
+  position: absolute;
+  display: block;
+  background-image: url('/art/motor-toys.webp');
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.world-art {
+  background-image: url('/art/motor-park.webp');
+}
+.world .car-body,
+.world .passenger {
+  position: absolute;
+}
+.stage-top {
+  padding: 10px 17px 10px 10px;
+  top: 18px;
+  left: 18px;
+  border-radius: 23px;
+  background: #edf8ffeb;
+  box-shadow: 0 4px 0 #1534521a;
+}
+.screen-garden .weather-tint {
+  background: linear-gradient(0deg, #a5d687c9, #e3f6dd00 85%);
+}
+@media (max-width: 700px) {
+  .stage-top {
+    padding: 8px 13px 8px 8px;
+    left: 10px;
+    top: 17px;
+    gap: 10px;
+  }
+  .stage-top h1 {
+    font-size: 20px;
+  }
+  .stage-top p {
+    font-size: 10px;
+  }
+  .home-toy {
+    top: 31%;
+  }
+  .home-toy .toy-car {
+    height: 217px;
+  }
+  .home-toy .passenger {
+    top: 9%;
+  }
+  .home-toy .car-body {
+    bottom: -45px;
+  }
+  .screen-home:after {
+    background: linear-gradient(180deg, #dff3ffbf, transparent 40%);
+  }
+}
+@media (min-width: 1001px) {
+  .home-toy {
+    top: 23%;
+  }
+  .home-toy .passenger {
+    top: 7%;
+  }
+}
+@media (max-width: 700px) {
+  .world {
+    height: calc(100svh - 169px);
+  }
+}
+@media (max-width: 700px) and (max-height: 760px) {
+  .topbar {
+    height: 70px;
+  }
+  .world {
+    height: calc(100svh - 155px);
+    min-height: 450px;
+  }
+  .scene-heading {
+    top: 17px;
+  }
+  .scene-heading h1 {
+    font-size: 28px;
+  }
+  .scene-heading p {
+    font-size: 9px;
+  }
+  .garage-stamp {
+    display: none;
+  }
+  .garden-button {
+    top: 113px;
+  }
+  .home-toy {
+    top: 24%;
+    left: 52%;
+  }
+  .home-toy .toy-car {
+    width: 240px;
+    height: 160px;
+  }
+  .home-toy .car-body {
+    bottom: -40px;
+  }
+  .home-toy .passenger {
+    top: 5%;
+  }
+  .speech-bubble {
+    font-size: 10px;
+    top: -6px;
+  }
+  .home-controls {
+    padding: 9px 12px 13px;
+    gap: 8px 12px;
+    bottom: 12px;
+  }
+  .friend-picks button,
+  .car-picks button {
+    height: 50px;
+  }
+  .group-label {
+    font-size: 9px;
+  }
+  .selection-group {
+    gap: 5px;
+  }
+  .home-controls .go-button {
+    min-height: 54px;
+    font-size: 19px;
+    padding: 8px 15px;
+  }
+  .home-controls .go-button small {
+    display: none;
+  }
+  .below-world {
+    padding: 10px 0;
+    min-height: 85px;
+  }
+  .home-keepsake {
+    display: none;
+  }
+  .reward-panel h1 {
+    font-size: 23px;
+  }
+  .gift-art {
+    width: 150px;
+    height: 135px;
+  }
+  .gift-art .sprite {
+    width: 150px;
+  }
+  .reward-panel .quiet-button {
+    margin-top: 10px;
+  }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .topbar {
+    height: 56px;
+  }
+  .world {
+    height: calc(100svh - 128px);
+    min-height: 255px;
+  }
+  .below-world {
+    min-height: 72px;
+    padding: 8px 0;
+  }
+  .activity-choices button {
+    min-height: 52px;
+  }
+  .scene-heading h1 {
+    font-size: 25px;
+  }
+  .scene-heading {
+    top: 15px;
+  }
+  .scene-heading p {
+    font-size: 9px;
+  }
+  .home-toy {
+    top: 2%;
+    left: 54%;
+  }
+  .home-toy .toy-car {
+    width: 235px;
+    height: 157px;
+  }
+  .home-toy .car-body {
+    bottom: -42px;
+  }
+  .home-toy .passenger {
+    top: 4%;
+  }
+  .speech-bubble {
+    font-size: 9px;
+    padding: 5px 9px;
+    left: 61%;
+  }
+  .home-controls {
+    padding-top: 7px;
+    padding-bottom: 11px;
+    bottom: 10px;
+  }
+  .friend-picks button,
+  .car-picks button {
+    height: 47px;
+  }
+  .home-controls .go-button {
+    min-height: 54px;
+  }
+  .group-label {
+    font-size: 9px;
+  }
+  .selection-group {
+    gap: 5px;
+  }
+  .garden-button {
+    top: 15px;
+    right: 17px;
+  }
+  .stage-top {
+    top: 10px;
+    left: 12px;
+    padding: 6px 12px 6px 6px;
+  }
+  .stage-top h1 {
+    font-size: 20px;
+  }
+  .stage-top p {
+    font-size: 9px;
+  }
+  .stage-back {
+    width: 44px;
+    height: 44px;
+  }
+  .activity-board {
+    inset: 78px 20px 8px;
+  }
+  .wash-car {
+    width: 280px;
+    height: 174px;
+    top: -18%;
+  }
+  .wash-spot {
+    width: 54px;
+    height: 54px;
+  }
+  .dirt-mark {
+    font-size: 53px;
+  }
+  .spot-0 {
+    left: calc(50% - 121px);
+    top: 31%;
+  }
+  .spot-1 {
+    left: calc(50% - 68px);
+    top: 53%;
+  }
+  .spot-2 {
+    left: calc(50% - 15px);
+    top: 30%;
+  }
+  .spot-3 {
+    left: calc(50% + 40px);
+    top: 50%;
+  }
+  .spot-4 {
+    left: calc(50% + 85px);
+    top: 25%;
+  }
+  .flower-pot {
+    max-width: 120px;
+  }
+  .fruit-tree {
+    width: 200px;
+    top: -23%;
+  }
+  .fruit {
+    width: 64px;
+    height: 64px;
+  }
+  .picnic-basket {
+    top: 25%;
+    width: 200px;
+    padding: 7px;
+  }
+  .activity-friend {
+    width: 90px;
+  }
+  .basket-mouth {
+    height: 49px;
+  }
+  .basket-mouth .sprite {
+    width: 46px;
+  }
+  .driving {
+    width: 190px;
+    height: 133px;
+    top: -9%;
+  }
+  .drive-area {
+    inset: 75px 20px 63px;
+  }
+  .drive-destination {
+    padding: 7px;
+    font-size: 10px;
+  }
+  .drive-destination > svg {
+    width: 25px;
+    height: 25px;
+  }
+  .touch-hint {
+    display: none;
+  }
+  .ride-go {
+    min-height: 43px;
+    bottom: 11px;
+    padding: 6px;
+    width: 120px;
+  }
+  .ride-go > svg:last-child {
+    width: 30px;
+    height: 30px;
+  }
+  .reward-kicker {
+    font-size: 13px;
+  }
+  .reward-panel h1 {
+    font-size: 22px;
+  }
+  .reward-panel {
+    grid-template-rows: 28px 35px 1fr 63px;
+  }
+  .gift-art {
+    width: 130px;
+    height: 120px;
+  }
+  .gift-art .sprite {
+    width: 130px;
+  }
+  .reward-friends .sprite {
+    width: 42px;
+  }
+  .reward-panel > p {
+    font-size: 12px;
+  }
+  .reward-panel .go-button {
+    font-size: 17px;
+    min-height: 49px;
+  }
+  .garden-footer .go-button {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .garden-items {
+    inset: 82px 25px 68px;
+  }
+}
+
+/* Always-visible touch affordances; motion is supplemental, never required. */
+.top-actions a.icon-button {
+  text-decoration: none;
+  cursor: pointer;
+}
+.top-actions a:focus-visible {
+  outline: 3px solid #ffdc64;
+  outline-offset: 4px;
+}
+.home-controls .go-button {
+  position: relative;
+  box-shadow:
+    0 6px 0 #bb7a15,
+    0 0 0 3px #ffe574,
+    0 0 26px #ffce4144;
+}
+.home-controls .go-button:after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border: 2px solid #fff2a0;
+  border-radius: 24px;
+  pointer-events: none;
+  animation: action-breathe 3.4s ease-in-out infinite;
+}
+.tap-cue {
+  position: absolute;
+  right: -13px;
+  bottom: -19px;
+  z-index: 9;
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  background: #fffaf0;
+  border: 3px solid #ffce49;
+  color: #234f78;
+  box-shadow: 0 3px 0 #17385744;
+  pointer-events: none;
+  animation: tap-demonstration 3s ease-in-out infinite;
+}
+.tap-cue svg {
+  width: 31px;
+  height: 31px;
+  fill: #fff4d7;
+  stroke-width: 2.5;
+}
+.fruit {
+  background: #fff8cd55;
+  border: 3px solid #fff3b9;
+  box-shadow: 0 5px 0 #143f5822;
+}
+.fruit.is-next {
+  border-color: #ffcf38;
+  box-shadow:
+    0 0 0 5px #fff9df,
+    0 6px 0 #25415730;
+}
+.tap-ring {
+  display: none;
+}
+.wash-spot {
+  background: #e1f5ff88;
+  border: 3px solid #f2fbff;
+  box-shadow: 0 5px 0 #173f6227;
+}
+.wash-spot .dirt-mark {
+  font-size: 72px;
+}
+.wash-spot.is-next {
+  border-color: #ffd34e;
+  box-shadow:
+    0 0 0 5px #fff9e1,
+    0 5px 0 #173f6227;
+}
+.soap-bubble {
+  right: -5px;
+  top: -7px;
+}
+.wash-spot.clean {
+  border-color: transparent;
+  box-shadow: none;
+  background: none;
+}
+.flower-pot {
+  border: 3px solid #eefbff;
+  background: #f1fff3b3;
+  border-radius: 24px;
+  box-shadow: 0 5px 0 #21516426;
+}
+.flower-pot.is-next {
+  border-color: #ffcf44;
+  box-shadow:
+    0 0 0 5px #fff7d0,
+    0 5px 0 #21516426;
+}
+.flower-pot.growth-2 {
+  border-color: #60c79e;
+  background: #d9ffe5a1;
+}
+.flower-pot .tap-cue {
+  right: -6px;
+  bottom: 14px;
+}
+.water-hint {
+  top: -17px;
+  right: 15px;
+}
+.drive-area {
+  outline: 3px dashed #e4f6ff99;
+  outline-offset: -6px;
+  background: #dcefff0a;
+}
+.ride-go {
+  box-shadow:
+    0 5px 0 #c28d24,
+    0 0 0 4px #fff3b6;
+}
+.touch-hint {
+  background: #fff7e5cc;
+  padding: 10px 18px;
+  border-radius: 22px;
+}
+.reward-panel .go-button {
+  box-shadow:
+    0 6px 0 #bb7a15,
+    0 0 0 4px #fff1ac;
+}
+.garden-move-hint {
+  position: absolute;
+  left: 50%;
+  top: 116px;
+  transform: translateX(-50%);
+  background: #f6fbffed;
+  border: 2px solid #cae7f6;
+  color: #255e7a;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  font-size: 12px;
+  font-weight: 800;
+  z-index: 3;
+  white-space: nowrap;
+}
+.garden-move-hint svg {
+  width: 21px;
+  height: 21px;
+}
+.garden-move-hint svg:first-child {
+  animation: drag-demonstration 3.5s ease-in-out infinite;
+}
+.movable-garden {
+  display: block;
+  inset: 176px 35px 120px;
+  min-inline-size: 0;
+  padding: 0;
+  margin: 0;
+  border: 2px dashed #e4f7eaa3;
+  border-radius: 24px;
+  touch-action: none;
+  --item-size: clamp(76px, 11vw, 132px);
+}
+.movable-garden .garden-item {
+  position: absolute;
+  left: calc(var(--x) * (100% - var(--item-size)));
+  top: calc(var(--y) * (100% - var(--item-size) - 12px));
+  width: var(--item-size);
+  height: calc(var(--item-size) + 12px);
+  max-width: none;
+  max-height: none;
+  border-radius: 24px;
+  background: #e7f4e763;
+  border: 2px solid #ffffe6a6;
+  box-shadow: 0 4px 0 #14354c14;
+  touch-action: none;
+  cursor: grab;
+  transition:
+    box-shadow 0.15s,
+    background 0.15s;
+  z-index: 1;
+}
+.movable-garden .garden-item > .sprite {
+  width: 100%;
+  height: calc(100% - 12px);
+}
+.movable-garden .garden-item:active {
+  transform: none;
+}
+.movable-garden .garden-item.being-moved {
+  z-index: 20;
+  cursor: grabbing;
+  background: #fff1a4a1;
+  border-color: #ffcf42;
+  box-shadow: 0 14px 20px #16385444;
+}
+.garden-item-grip {
+  position: absolute;
+  right: -5px;
+  bottom: 7px;
+  background: #fff7d4;
+  border: 2px solid #f2c94a;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: #346b85;
+  pointer-events: none;
+}
+.garden-item-grip svg {
+  width: 17px;
+  height: 17px;
+}
+.movable-garden .growth-dots {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+}
+.movable-garden .garden-item:nth-child(even) {
+  align-self: auto;
+}
+@keyframes action-breathe {
+  0%,
+  60%,
+  100% {
+    opacity: 0.6;
+    scale: 1;
+  }
+  78% {
+    opacity: 1;
+    scale: 1.025;
+  }
+}
+@keyframes tap-demonstration {
+  0%,
+  58%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+  70% {
+    transform: translateY(-8px) rotate(-12deg);
+  }
+  82% {
+    transform: translateY(0) rotate(-12deg);
+  }
+}
+@keyframes drag-demonstration {
+  0%,
+  50%,
+  100% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(7px);
+  }
+}
+@media (max-width: 700px) {
+  .movable-garden {
+    inset: 172px 16px 119px;
+    --item-size: clamp(68px, 22vw, 100px);
+    border-radius: 18px;
+  }
+  .garden-move-hint {
+    top: 115px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .garden-weather {
+    display: none;
+  }
+  .tap-cue {
+    width: 39px;
+    height: 39px;
+    right: -7px;
+    bottom: -12px;
+  }
+  .tap-cue svg {
+    width: 25px;
+    height: 25px;
+  }
+  .wash-spot .dirt-mark {
+    font-size: 53px;
+  }
+  .flower-pot {
+    border-radius: 20px;
+  }
+  .flower-pot .tap-cue {
+    bottom: 6px;
+  }
+  .home-controls .go-button:after {
+    inset: -5px;
+    border-radius: 20px;
+  }
+  .movable-garden .garden-item {
+    border-radius: 18px;
+  }
+  .garden-item-grip {
+    width: 24px;
+    height: 24px;
+  }
+  .garden-item-grip svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+@media (max-width: 700px) and (max-height: 760px) {
+  .movable-garden {
+    inset: 160px 15px 109px;
+    --item-size: clamp(62px, 18vw, 80px);
+  }
+  .garden-move-hint {
+    top: 106px;
+  }
+  .garden-item-grip {
+    width: 21px;
+    height: 21px;
+  }
+  .garden-item-grip svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .movable-garden {
+    inset: 78px 24px 69px;
+    --item-size: clamp(48px, 8vh, 66px);
+  }
+  .garden-move-hint {
+    top: 15px;
+    left: auto;
+    right: 28px;
+    transform: none;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  .garden-move-hint svg {
+    width: 16px;
+    height: 16px;
+  }
+  .screen-garden .weather-button {
+    display: none;
+  }
+  .garden-item-grip {
+    width: 20px;
+    height: 20px;
+    bottom: 2px;
+  }
+  .garden-item-grip svg {
+    width: 12px;
+    height: 12px;
+  }
+  .wash-spot .dirt-mark {
+    font-size: 43px;
+  }
+  .tap-cue {
+    width: 32px;
+    height: 32px;
+  }
+  .tap-cue svg {
+    width: 21px;
+    height: 21px;
+  }
+  .flower-pot {
+    border-radius: 17px;
+  }
+  .garden-items {
+    border-radius: 12px;
+  }
+}
+.movable-garden .garden-item {
+  --layout-x: var(--x);
+  --layout-y: var(--y);
+  left: calc(var(--layout-x) * (100% - var(--item-size)));
+  top: calc(var(--layout-y) * (100% - var(--item-size) - 12px));
+}
+.movable-garden .garden-item.unplaced {
+  --layout-x: var(--default-x);
+  --layout-y: var(--default-y);
+}
+@media (max-width: 700px) {
+  .movable-garden .garden-item.unplaced {
+    --layout-x: var(--phone-x);
+    --layout-y: var(--phone-y);
+  }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .movable-garden {
+    --item-size: clamp(38px, 8vh, 56px);
+  }
+}
